@@ -1,5 +1,5 @@
 """
-URL configuration for homepageKJS project.
+URL configuration for homepageCAPD project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
-app_name = "registration"
+from saleapp import views as saleapp_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,13 +25,15 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     
-    path('api/register/', views.register_user, name='register_user'),
-    path('api/users/', views.list_users, name='list_users'),  # new endpoint
-    path('api/users/<int:pk>/', views.user_detail, name='user_detail'),
+    path('api/register/', saleapp_views.register_user, name='register_user'),
+    path('api/users/', saleapp_views.list_users, name='list_users'),  # new endpoint
+    path('api/users/<int:pk>/', saleapp_views.user_detail, name='user_detail'),
+    
+    path('login/', saleapp_views.login_view, name='login'),
 
-    path('logout/', views.logout_view, name='logout'),
-    path('users/', views.users_html, name='users_html'),
-    path('login/', views.login_view, name='login'),
-    path('users', views.user_list_view, name='user_list'),
+    path('logout/', saleapp_views.logout_view, name='logout_html'),
+    path('users/', saleapp_views.users_html, name='users_html'),
 
 ]
+
+#version carl
