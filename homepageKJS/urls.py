@@ -36,4 +36,3 @@ urlpatterns = [
 
 ]
 
-#version carl
